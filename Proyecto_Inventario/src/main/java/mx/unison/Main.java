@@ -1,18 +1,20 @@
 package mx.unison;
 
-import mx.unison.controller.Vistas;
+import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
 
-import javax.swing.SwingUtilities;
-import javax.swing.UIManager;
+public class Main extends Application {
+    @Override
+    public void start(Stage primaryStage) throws Exception {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/mx/unison/vistas/productos.fxml"));
+        primaryStage.setTitle("Sistema de Inventario Reingeniería AI - Caleb Romo");
+        primaryStage.setScene(new Scene(loader.load()));
+        primaryStage.show();
+    }
 
-public class Main {
     public static void main(String[] args) {
-        SwingUtilities.invokeLater(() -> {
-            try {
-                UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-            } catch (Exception ignored) {}
-            Vistas vistas = new Vistas();
-            vistas.setVisible(true);
-        });
+        launch(args);
     }
 }

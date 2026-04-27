@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<VBox spacing="20" style="-fx-background-color: #f4f4f9;" xmlns:fx="http://javafx.com/fxml"
+      fx:controller="mx.unison.controller.ProductoViewHandler">
+    <padding><Insets top="25" right="25" bottom="25" left="25"/></padding>
+
+    <Label text="Gestión de Inventario Moderno" style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: #2c3e50;"/>
+
+    <HBox spacing="15" alignment="CENTER_LEFT">
+        <TextField fx:id="txtNombre" promptText="Nombre del Producto" HBox.hgrow="ALWAYS" style="-fx-background-radius: 5;"/>
+        <TextField fx:id="txtPrecio" promptText="Precio ($)" prefWidth="100" style="-fx-background-radius: 5;"/>
+        <TextField fx:id="txtCantidad" promptText="Stock" prefWidth="80" style="-fx-background-radius: 5;"/>
+        <Button text="Añadir" onAction="#handleGuardar" style="-fx-background-color: #27ae60; -fx-text-fill: white; -fx-font-weight: bold; -fx-cursor: hand;"/>
+    </HBox>
+
+    <TableView fx:id="tablaProductos" VBox.vgrow="ALWAYS" style="-fx-background-radius: 5;">
+        <columns>
+            <TableColumn fx:id="colId" text="ID" prefWidth="50"/>
+            <TableColumn fx:id="colNombre" text="Nombre" prefWidth="250"/>
+            <TableColumn fx:id="colPrecio" text="Precio" prefWidth="100"/>
+            <TableColumn fx:id="colStock" text="Stock" prefWidth="100"/>
+        </columns>
+    </TableView>
+
+    <HBox spacing="10" alignment="CENTER_RIGHT">
+        <Button text="Eliminar Seleccionado" onAction="#handleEliminar" style="-fx-background-color: #e74c3c; -fx-text-fill: white; -fx-cursor: hand;"/>
+    </HBox>
+</VBox>
