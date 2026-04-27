@@ -1,60 +1,79 @@
 package mx.unison.models;
 
-/**
- * Clase de productos.
- * Contiene los atributos necesarios para guardar productos en la base de datos.
- */
-public class Producto {
+import com.j256.ormlite.field.DatabaseField;
+import com.j256.ormlite.table.DatabaseTable;
+import java.io.Serializable;
 
-    /**
-     * ID del producto
-     */
-    public int id;
+@DatabaseTable(tableName = "productos")
+public class Producto implements Serializable {
+    private static final long serialVersionUID = 1L;
 
-    /**
-     * Nombre del producto
-     */
-    public String nombre;
+    @DatabaseField(generatedId = true)
+    private Integer id;
 
-    /**
-     * Descripción del producto
-     */
-    public String descripcion;
+    @DatabaseField(canBeNull = false)
+    private String nombre;
 
-    /**
-     * Stock disponible del producto
-     */
-    public int cantidad;
+    @DatabaseField
+    private String descripcion;
 
-    /**
-     * Precio base del producto
-     */
-    public double precio;
+    @DatabaseField(canBeNull = false)
+    private Integer cantidad;
 
-    /**
-     * ID del almacén donde se encuentra el producto
-     */
-    public int almacenId;
+    @DatabaseField(canBeNull = false)
+    private Double precio;
 
-    /**
-     * Nombre del almacen donde se encuentra el producto
-     */
-    public String almacenNombre;
+    @DatabaseField(foreign = true, foreignAutoRefresh = true, canBeNull = true)
+    private Almacen almacen;
 
-    /**
-     * Fecha de creación del producto
-     */
-    public String fechaCreacion;
+    @DatabaseField
+    private String fechaCreacion;
 
-    /**
-     * Fecha de la última modificación del producto
-     *
-     * Se actualiza cuando uno o más atributos son modificados
-     */
-    public String fechaModificacion;
+    @DatabaseField
+    private String fechaModificacion;
 
-    /**
-     * Nombre de usuario del último usuario en modificar el producto
-     */
-    public String ultimoUsuario;
+    @DatabaseField
+    private String ultimoUsuario;
+
+    public Producto() {}
+
+    public Producto(String nombre, Integer cantidad, Double precio) {
+        this.nombre = nombre;
+        this.cantidad = cantidad;
+        this.precio = precio;
+        this.fechaCreacion = java.time.LocalDateTime.now().toString();
+    }
+
+    // Getters y Setters corregidos
+    public Integer getId() { return id; }
+    public void setId(Integer id) { this.id = id; }
+
+    public String getNombre() { return nombre; }
+    public void setNombre(String nombre) { this.nombre = nombre; }
+
+    public String getDescripcion() { return descripcion; }
+    public void setDescripcion(String descripcion) { this.descripcion = descripcion; }
+
+    public Integer getCantidad() { return cantidad; }
+    public void setCantidad(Integer cantidad) { this.cantidad = cantidad; }
+
+    public Double getPrecio() { return precio; }
+    public void setPrecio(Double precio) { this.precio = precio; }
+
+    public Almacen getAlmacen() { return almacen; }
+    public void setAlmacen(Almacen almacen) { this.almacen = almacen; }
+
+    public String getFechaCreacion() { return fechaCreacion; }
+    public void setFechaCreacion(String fechaCreacion) { this.fechaCreacion = fechaCreacion; }
+
+    public String getFechaModificacion() { return fechaModificacion; }
+    public void setFechaModificacion(String fechaModificacion) { this.fechaModificacion = fechaModificacion; }
+
+    public String getUltimoUsuario() { return ultimoUsuario; }
+    public void setUltimoUsuario(String ultimoUsuario) { this.ultimoUsuario = ultimoUsuario; }
+
+    @Override
+    public String toString() {
+        return "Producto{" + "id=" + id + ", nombre='" + nombre + "'}";
+    }
 }
