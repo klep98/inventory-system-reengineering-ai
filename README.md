@@ -14,7 +14,7 @@ Ejecutar la clase Launcher.java
 Este proyecto representa la **reingeniería integral** de un sistema de inventario legado (Tarea 12). El objetivo principal fue elevar los estándares de calidad del software aplicando patrones de diseño modernos, seguridad avanzada y una interfaz de usuario intuitiva, todo esto asistido por Inteligencia Artificial (**GitHub Copilot**).
 
 ## 🚀 Tecnologías Utilizadas
-* **Java 24**: Lenguaje base para la lógica de negocio.
+* **Java 23**: Lenguaje base para la lógica de negocio.
 * **JavaFX & FXML**: Para una interfaz gráfica moderna, responsiva y desacoplada.
 * **ORMLite**: Implementación de Object-Relational Mapping para la persistencia en SQLite.
 * **JUnit 5**: Framework para pruebas unitarias exhaustivas.
